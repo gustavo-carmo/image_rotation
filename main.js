@@ -89,7 +89,7 @@ const rotate = (image_data, angle_in_radian) => {
     return;
   }
 
-  const radian = (angle_in_radian % (2 * Math.PI)) / Math.PI;
+  const radian = angle_in_radian % (2 * Math.PI);
   const cosine = Math.cos(radian);
   const sine = Math.sin(radian);
   const base_index_rgba = 4;
