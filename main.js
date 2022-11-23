@@ -84,7 +84,12 @@ const rotate = (image_data, angle_in_radian) => {
     message_number_undefined: "The value angle_in_radian is required for this function, and it wasn't provided"
   });
 
-  const radian = angle_in_radian % (2 * Math.PI);
+  if (angle_in_radian < 0) {
+    throw new Error('This function only rotate the image in clockwise direction');
+    return;
+  }
+
+  const radian = (angle_in_radian % (2 * Math.PI)) / Math.PI;
   const cosine = Math.cos(radian);
   const sine = Math.sin(radian);
   const base_index_rgba = 4;
@@ -104,8 +109,8 @@ const rotate = (image_data, angle_in_radian) => {
     for (let x = 1; x <= new_image_width; x++) {
       const cartesian = translate_to_cartesian(x, y);
       const source = translate_to_screen(
-        cosine * cartesian.x - sine * cartesian.y,
-        cosine * cartesian.y + sine * cartesian.x
+        cosine * cartesian.x + sine * cartesian.y,
+        cosine * cartesian.y - sine * cartesian.x
       );
 
       if (source.x >= 0 && source.x < new_image_width && source.y >= 0 && source.y < new_image_height) {

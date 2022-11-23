@@ -39,11 +39,11 @@
     // Initialize a new ImageData object
     let imageData = new ImageData(arr, 100, 200);
 
-    const image_rotated = rotate(imageData, 0.3490658503988659);
+    const image_rotated = rotate(imageData, 0.17453292519943295);
 
     // Draw image data to the canvas
     ctx.putImageData(imageData, 20, 20);
-    ctx.putImageData(new ImageData(image_rotated.data, image_rotated.width, image_rotated.height), 500, 20);
+    ctx.putImageData(new ImageData(image_rotated.data, image_rotated.width, image_rotated.height), 300, 20);
     
 
   </script>
